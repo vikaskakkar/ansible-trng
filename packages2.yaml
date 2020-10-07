@@ -1,0 +1,14 @@
+---
+- name: "Install ftp and specified package"
+  hosts: hdfs1
+  vars:
+   package:
+     - telnet
+     - ftp
+
+  tasks:
+
+    - name: Install ftp telnet
+      yum: 
+        name: "{{package}}"
+        state: present

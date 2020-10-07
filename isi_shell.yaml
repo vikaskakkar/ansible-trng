@@ -1,0 +1,15 @@
+---
+- name: Query Isilon Status
+  hosts: isilon1
+  vars:
+   isilon_cmd: "isi status"
+
+  gather_facts: no
+
+  tasks:
+   - name: connect to "{{ansible_host}}" via SSH and issue "isi status"
+     shell: "{{isilon_cmd}}"
+     register: output
+
+   - debug:
+       var: output

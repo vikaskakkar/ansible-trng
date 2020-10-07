@@ -1,0 +1,15 @@
+---
+- name: "create ECS S3 bucket"
+  hosts: ecs
+#  vars:
+
+  tasks:
+    - name: create s3 bucket
+      aws_s3:
+       bucket: mybucket1010
+       mode: delete
+       permission: public-read
+       rgw: yes
+       s3_url: http://192.168.1.31:9020
+       aws_access_key: vikuser1
+       aws_secret_key: evriD+b+dNHCFGgotZQWDXQESM95o5YTHBl6q7fV
