@@ -1,0 +1,17 @@
+  145  yum install git python3-pip
+  159  yum install jq git curl
+  313  git-create
+  314  git
+  315  git remote add origin https://github.com/vikaskakkar/ansible-trng.git
+  316  git init
+  318  git clone https://github.com/vikaskakkar/ansible-trng.git
+  328  git status
+  329  git add .
+  330  git status
+  331  git commit -m "initial commit"
+  332  git push
+  333  git push https://github.com/vikaskakkar/ansible-trng.git
+  334  git push https://github.com/vikaskakkar/ansible-trng.git master
+  335  history | git
+  336  history | grep git
+  337  history | grep git > howtogit
