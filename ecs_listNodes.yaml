@@ -1,0 +1,18 @@
+---
+- name: Get ECS node list
+  hosts: ecs
+  tasks:
+  - name: list the ECS nodes
+   # validate_certs: no
+    uri:
+     validate_certs: no
+     #user: admin
+     #password: Password123!
+     url: https://192.168.1.31/dta-service/vpools
+     method: POST
+     headers:
+      Content-Type: application/json
+      Accept: application/json
+      X_SDS_AUTH_TOKEN: "{{results_login.x_sds_auth_token}}"
+     body_format: json
+    register: results_listvpools

@@ -1,0 +1,31 @@
+---
+- name: Get ECS API Authentication token
+  hosts: ecs
+  tasks:
+  - name: get the auth token
+    uri:
+     validate_certs: no
+     user: "root"
+     password: "Password123!"
+     url: https://192.168.1.31:4443/login
+     method: GET
+     headers:
+      Content-Type: application/json
+      Accept: application/json
+    register: results_login
+  - debug:
+      var: results_login
+
+  - name: list the ECS nodes
+    uri:
+     validate_certs: no
+     #user: admin
+     #password: Password123!
+     url: https://192.168.1.31:4443/vdc/data-service/vpools.json
+     method: GET
+     headers:
+      Content-Type: application/json
+      Accept: application/json
+      X_SDS_AUTH_TOKEN: "{{results_login.x_sds_auth_token}}"
+     body_format: json
+    register: results_listvpools

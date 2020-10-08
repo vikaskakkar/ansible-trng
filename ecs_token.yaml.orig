@@ -1,0 +1,15 @@
+---
+- name: Get ECS API Authentication token
+  hosts: ecs
+  tasks:
+  - name: get the auth token
+    uri:
+     validate_certs: no
+     user: admin
+     password: Password123!
+     url: https://192.168.1.31/login
+     method: GET
+     headers:
+      Content-Type: application/json
+      Accept: application/json
+    register: results_login
